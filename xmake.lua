@@ -38,7 +38,7 @@ add_requires("levilamina")
 
 set_runtimes("MD")
 
-target("rename-this") -- Change this to your plugin name.
+target("Dobby") -- Change this to your plugin name.
     add_cxflags(
         "/EHa", -- To catch both structured (asynchronous) and standard C++ (synchronous) exceptions.
         "/utf-8" -- To enable UTF-8 source code.
@@ -57,20 +57,6 @@ target("rename-this") -- Change this to your plugin name.
     add_packages(
         "levilamina"
     )
-    add_shflags(
-        "/DELAYLOAD:bedrock_server.dll" -- To use forged symbols of SymbolProvider.
-    )
     set_exceptions("none") -- To avoid conflicts with /EHa.
     set_kind("shared")
     set_languages("cxx20")
-
-    after_build(function (target)
-        local plugin_packer = import("scripts.after_build")
-
-        local plugin_define = {
-            pluginName = target:name(),
-            pluginFile = path.filename(target:targetfile()),
-        }
-        
-        plugin_packer.pack_plugin(target,plugin_define)
-    end)

@@ -24,7 +24,7 @@ jobs:
         with:
           name: ${{ github.event.repository.name }}-windows-x64-${{ github.sha }}
           path: |
-            bin/
+            build/windows/x64/release
 
   upload-to-release:
     needs:
