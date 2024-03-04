@@ -125,3 +125,4 @@
 
 
 ## Project specific
+*.lua   text
